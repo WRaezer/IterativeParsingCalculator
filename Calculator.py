@@ -7,23 +7,17 @@ onetoten = ["0", "1", "2",
 ops = ["-", "=", "+", "/"]
 def checkdigit(expression, position):
     item = expression[position]
-    if( item is in onetoten):
+    if( item in onetoten):
         return item
     else:
         return ""
-def checkop(expression, position):
-    item = expression[position]
-    if( item is in ops):
-        return item
-    else:
-         return "" 
 def getPlus(expression):
     scan = 0 
     for scan in range(len(expression)):
-        if(checkop(expression[scan] == "+", scan)): 
-            if(checkdigit(expression, expression[scan - 1]) != ""):
+        if(expression[scan] == "+"): 
+            if(checkdigit(expression, scan - 1) != ""):
                 left = expression[scan - 1]
-            if(checkdigit(expression, expression[scan + 1]) != ""):
+            if(checkdigit(expression, scan + 1) != ""):
                 right = expression[scan + 1]
                 tree = ["+", [left, right]]
                 return tree
@@ -32,5 +26,6 @@ def getPlus(expression):
 
 print(getPlus(expression))
          
+
         
         
